@@ -1,7 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <meta charset="utf-8">
-    <title>Contact</title>
-    <h1>Contact</h1>
-    <p>Send me an email at programmer@example.com</p>
+<meta charset="utf-8">
+<title>Contact</title>
+<h2>Contact me</h2>
+<form action="/contact/send-message" method="POST" enctype="multipart/form-data">
+    <label>
+        Your name: <input type="text" name="author">
+    </label>
+    <label>
+        Your email: <input type="email" name="sender">
+    </label>
+    <label>
+        Title: <input type="text" name="title">
+    </label>
+    <label>
+        Message: <textarea name="message"></textarea>
+    </label>
+     <label>
+       File: <input type="file" name="file" accept=".jpg, .jpeg, .png, .gif" />
+    </label>
+    <button type="submit">Send message</button>
+</form>
+
+{{#if isSent}}
+<div class="isSent">
+    <p>The message has been sent!</p>
+    <p>Attached file: {{fileName}}</p>
+</div>
+{{/if}}
+
+{{#if isError}}
+<div class="isError">
+    <p>You can't leave fields empty!</p>
+</div>
+{{/if}}
+
 </html>
